@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Examination System</title>
+</head>
+<body>
+
+<h2>Online Examination System</h2>
+
+<!-- Student Login -->
+<div id="login">
+    <input id="name" placeholder="Enter Student Name">
+    <button onclick="login()">Login</button>
+</div>
+
+<!-- Questions -->
+<div id="exam" style="display:none">
+
+    <h3>Answer the Questions</h3>
+
+    <p>1. Which language is used for web development?</p>
+    <input type="radio" name="q1" value="HTML"> HTML
+    <input type="radio" name="q1" value="Java"> Java
+
+    <p>2. Which is a programming language?</p>
+    <input type="radio" name="q2" value="Python"> Python
+    <input type="radio" name="q2" value="CSS"> CSS
+
+    <br><br>
+    <button onclick="result()">Submit</button>
+</div>
+
+<!-- Result -->
+<div id="output"></div>
+
+<script>
+
+function login() {
+    let name = document.getElementById("name").value;
+
+    if(name == "") {
+        alert("Enter your name");
+    }
+    else {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("exam").style.display = "block";
+    }
+}
+
+function result() {
+    let score = 0;
+
+    if(document.querySelector('input[name="q1"]:checked')?.value == "HTML")
+        score++;
+
+    if(document.querySelector('input[name="q2"]:checked')?.value == "Python")
+        score++;
+
+    document.getElementById("exam").style.display = "none";
+
+    document.getElementById("output").innerHTML =
+        "<h3>Your Result: " + score + "/2</h3>";
+}
+
+</script>
+
+</body>
+</html>
